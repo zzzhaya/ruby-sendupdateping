@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: Sendupdateping::Sendupdateping</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">Sendupdateping::Sendupdateping</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/sendupdateping_rb.html">
+                lib/sendupdateping.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                Object
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+    <div id="diagram">
+      <map id="map" name="map">
+  <area shape="rect" coords="165,50,237,98"      href="CLI.html" alt="CLI" />
+  <area shape="rect" coords="27,50,141,98"      href="Sendupdateping.html" alt="Sendupdateping" />
+  <area shape="rect" coords="16,16,275,109"      href="../Sendupdateping.html" alt="Sendupdateping" />
+</map>
+<img src="../../dot/f_4.png" usemap="#map" border="0" alt="dot/f_4.png">
+    </div>
+
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000002">new</a>&nbsp;&nbsp;
+      <a href="#M000003">ping</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="Sendupdateping.src/M000002.html" target="Code" class="method-signature"
+            onclick="popupCode('Sendupdateping.src/M000002.html');return false;">
+          <span class="method-name">new</span><span class="method-args">(opts)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+opts(Hash) contains
+</p>
+<ul>
+<li>:pingservers Array of pingservers list
+
+</li>
+<li>:weblogname your blog name
+
+</li>
+<li>:weblogurl your blog url
+
+</li>
+<li>:extendedping(optional) use weblogUpdates.extendedPing instead of
+weblogUpdates.ping
+
+</li>
+<li>:changesurl (optional) your blog&#8216;s top page used when
+weblogUpdates.extendedPing
+
+</li>
+<li>:rssurl (optional) your blog&#8216;s rss feed url used when
+weblogUpdates.extendedPing
+
+</li>
+<li>:categoryname(optional) the category in which is your blog used when
+weblogUpdates.extendedPing
+
+</li>
+</ul>
+        </div>
+      </div>
+
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="Sendupdateping.src/M000003.html" target="Code" class="method-signature"
+            onclick="popupCode('Sendupdateping.src/M000003.html');return false;">
+          <span class="method-name">ping</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+send <a href="Sendupdateping.html#M000003">ping</a>
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

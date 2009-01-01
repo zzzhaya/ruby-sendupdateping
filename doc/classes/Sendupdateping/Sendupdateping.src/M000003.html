@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>ping (Sendupdateping::Sendupdateping)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sendupdateping.rb, line 35</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">ping</span>
+      <span class="ruby-ivar">@pingservers</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">pingserver</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">print</span> <span class="ruby-identifier">pingserver</span> , <span class="ruby-value str">&quot; : &quot;</span>
+        <span class="ruby-identifier">client</span> = <span class="ruby-constant">XMLRPC</span><span class="ruby-operator">::</span><span class="ruby-constant">Client</span>.<span class="ruby-identifier">new2</span>(<span class="ruby-identifier">pingserver</span>)
+        <span class="ruby-keyword kw">begin</span>
+          <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@extendedPing</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@changesurl</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@rssurl</span> <span class="ruby-keyword kw">and</span> <span class="ruby-ivar">@categoryname</span>
+            <span class="ruby-identifier">result</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">call</span>( <span class="ruby-value str">'weblogUpdates.extendedPing'</span>, <span class="ruby-ivar">@weblogname</span>, <span class="ruby-ivar">@weblogurl</span>, <span class="ruby-ivar">@changesurl</span>, <span class="ruby-ivar">@rssurl</span>, <span class="ruby-ivar">@categoryname</span>)
+          <span class="ruby-keyword kw">else</span>
+            <span class="ruby-identifier">result</span> = <span class="ruby-identifier">client</span>.<span class="ruby-identifier">call</span>(<span class="ruby-value str">'weblogUpdates.ping'</span>, <span class="ruby-ivar">@weblogname</span>, <span class="ruby-ivar">@weblogurl</span>)
+          <span class="ruby-keyword kw">end</span>
+          <span class="ruby-identifier">print</span> <span class="ruby-value str">'Error : '</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>[<span class="ruby-value str">&quot;ferror&quot;</span>]
+          <span class="ruby-identifier">print</span> <span class="ruby-identifier">result</span>[<span class="ruby-value str">&quot;message&quot;</span>]
+          <span class="ruby-identifier">print</span> <span class="ruby-value str">'  '</span>, <span class="ruby-identifier">result</span>[<span class="ruby-value str">&quot;legal&quot;</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">result</span>[<span class="ruby-value str">&quot;legal&quot;</span>]
+          <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;\n&quot;</span>
+        <span class="ruby-keyword kw">rescue</span>
+          <span class="ruby-identifier">print</span> <span class="ruby-value str">&quot;There is an error : &quot;</span>, <span class="ruby-identifier">$!</span>, <span class="ruby-value str">&quot;\n&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

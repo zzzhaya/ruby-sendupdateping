@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>execute (Sendupdateping::CLI)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/sendupdateping/cli.rb, line 7</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">execute</span>(<span class="ruby-identifier">stdout</span>, <span class="ruby-identifier">arguments</span>=[])
+
+      <span class="ruby-identifier">options</span> = {
+        <span class="ruby-identifier">:config</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>
+      }
+      <span class="ruby-identifier">mandatory_options</span> = <span class="ruby-node">%w( config )</span>
+
+      <span class="ruby-identifier">parser</span> = <span class="ruby-constant">OptionParser</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">opts</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">banner</span> = <span class="ruby-value str">&quot;Sending ping\n\nUsage: \#{File.basename($0)} [options]\n\nOptions are:\n&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/^          /</span>,<span class="ruby-value str">''</span>)
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">separator</span> <span class="ruby-value str">&quot;&quot;</span>
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-c&quot;</span>, <span class="ruby-value str">&quot;--config=YAML&quot;</span>, <span class="ruby-constant">String</span>,
+                <span class="ruby-value str">&quot;read YAML as a config file&quot;</span>
+                ) { <span class="ruby-operator">|</span><span class="ruby-identifier">arg</span><span class="ruby-operator">|</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>] = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load_file</span>( <span class="ruby-identifier">arg</span> ) }
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-value str">&quot;-h&quot;</span>, <span class="ruby-value str">&quot;--help&quot;</span>,
+                <span class="ruby-value str">&quot;Show this help message.&quot;</span>) { <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">opts</span>; <span class="ruby-identifier">exit</span> }
+        <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">parse!</span>(<span class="ruby-identifier">arguments</span>)
+
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">mandatory_options</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">mandatory_options</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">option</span><span class="ruby-operator">|</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">option</span>.<span class="ruby-identifier">to_sym</span>].<span class="ruby-identifier">nil?</span> }
+          <span class="ruby-identifier">stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">opts</span>; <span class="ruby-identifier">exit</span>
+        <span class="ruby-keyword kw">end</span>
+      <span class="ruby-keyword kw">end</span>
+
+      <span class="ruby-comment cmt"># do stuff</span>
+      <span class="ruby-identifier">cli</span> = <span class="ruby-constant">Sendupdateping</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:config</span>])
+      <span class="ruby-identifier">cli</span>.<span class="ruby-identifier">ping</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

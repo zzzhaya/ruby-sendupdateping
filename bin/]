@@ -1,0 +1,8 @@
+--- 
+:pingservers: 
+- "http://www.blogpeople.net/servlet/weblogUpdates"
+- "http://rpc.technorati.com/rpc/ping"
+:weblogname: "0:00の鐘はeternalic"
+:weblogurl: "http://eternalic.blogspot.com"
+:categoryname:
+:rssurl: "http://eternalic.blogspot.com/feeds/posts/default"
