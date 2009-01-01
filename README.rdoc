@@ -13,9 +13,13 @@ Send update ping to ping servers.
 == SYNOPSIS:
 
 require 'sendupdateping'
+
 require 'yaml'
+
 opts = Hash.new(YAML.load_file('config.yaml')
+
 client = Sendupdateping.new(opts)
+
 client.ping # Sending pings
 
 == REQUIREMENTS:
